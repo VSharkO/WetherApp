@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,11 +19,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.math.MathContext;
 
 public class MainActivity extends AppCompatActivity {
     String city;
     TextView rez;
-
     EditText text;
 
     public void search(View view){
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i=0;i<arr.length();i++){
 
                     JSONObject jsonPart = arr.getJSONObject(i);
-                    rez.setText(city+":\n Wether: "+ jsonPart.getString("main")+"\nTemperature: "+temp+"°C");
+                    rez.setText(city+":\n Wether: "+ jsonPart.getString("main")+"\nTemperature: "+String.format("%.1f",temp)+"°C");
                     Log.i("Main:",jsonPart.getString("main"));
                     Log.i("Description:",jsonPart.getString("description"));
 
